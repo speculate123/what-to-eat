@@ -55,6 +55,8 @@ function App() {
         <List queryCallback={queryCallback} />
         <br />
         <div>
+        <button onClick={getLocation}>Get Location</button>
+        <br />
         <iframe
             id="google-map"
             src="https://www.google.com/maps/embed/v1/search?q=餐廳&zoom=15&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
@@ -73,6 +75,10 @@ function App() {
   );
 }
 
-ReactDOM.render(<App/>,document.getElementById('root'));
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
 export default App;

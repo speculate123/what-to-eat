@@ -12,7 +12,7 @@ class List extends Component {
       filteredOptions: [],
       stagger: "forward",
       spring: "wobbly",
-      options: ["燒肉", "火鍋", "便當", "韓式", "拉麵", "港式", "牛肉麵"]
+      options: ["燒肉", "火鍋", "便當", "韓式", "拉麵", "港式", "牛肉麵", "早午餐"]
     };
 
     queryCallback = (event) => {
@@ -75,7 +75,8 @@ class List extends Component {
                 <button onClick={this.addOptions}>add</button>
             </div>
             <br></br>
-            <div>
+            <Flipped flipId="list">
+              <div className="fm-grid">
                 <button className="fm-show-all"
                     style={{
                         float: "right"
@@ -105,9 +106,6 @@ class List extends Component {
                     reset
                     </button>
                 )}
-            </div>
-            <Flipped flipId="list">
-              <div className="fm-grid">
                 <Flipped inverseFlipId="list">
                   <ul className="list-contents" onClick={this.queryCallback}>
                     {this.state.options
