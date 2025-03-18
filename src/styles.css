@@ -3,13 +3,11 @@ body {
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
   .fm-example {
-    padding: 2rem;
+    /* padding: 2rem; */
   }
   
   .fm-example > * {
     max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
   }
   
   .fm-grid > ul {
@@ -31,7 +29,7 @@ body {
   .fm-list {
     border-radius: 5px;
     background-color: #ececec;
-    margin-top: 2.5rem;
+    /* margin-top: 2.5rem; */
     max-width: 900px;
   }
   
@@ -56,6 +54,10 @@ body {
     display: block;
     border-radius: 4px;
     background-color: white;
+  }
+
+  .fm-item:hover {
+    background-color: #f9f9f9 !important;
   }
   
   .fm-item h3 {
@@ -90,12 +92,9 @@ body {
   }
   
   .fm-show-all {
-    padding: 0.5rem 1rem;
-    background-color: #ff4057;
-    color: white;
-    font-weight: bold;
-    border: 0;
-    border-radius: 3px;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    font-size: 1rem;
   }
   
   .fm-flex-container {
@@ -124,5 +123,21 @@ body {
   .fm-example input {
     position: relative;
     margin-right: 0.5rem;
+  }
+
+  #shuffle {
+    width: 6rem;
+    padding: 0.5rem 1rem;
+    background-color: #ff4057;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    border: 0;
+    border-radius: 3px;
+    margin-top: 1rem;
+  }
+
+  #shuffle:hover {
+    background-color: #f16878;
   }
   

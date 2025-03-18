@@ -14,6 +14,10 @@ class List extends Component {
       spring: "wobbly",
       options: ["燒肉", "火鍋", "便當", "韓式", "拉麵", "港式", "牛肉麵"]
     };
+
+    queryCallback = (event) => {
+        this.props.queryCallback(event.target.innerText);
+    }
   
     addToFilteredOptions = option => {
       this.setState(prevState => {
@@ -38,10 +42,16 @@ class List extends Component {
 
     shuffleList = () => this.setState(prevState => {
         var shuf = shuffle(prevState.options);
-        console.log(shuf);
+        document.getElementsByClassName("fm-item")[0].style.backgroundColor = "white";
         this.setState({
             options: shuf
         })
+        setTimeout(() => {
+            document.getElementsByClassName("fm-item")[0].style.backgroundColor = "lightgreen";
+            console.log(document.getElementsByClassName("fm-item")[0]);
+            document.getElementsByClassName("fm-item")[0].click();
+        }
+        , 10);
     });
   
     render() {
@@ -59,30 +69,32 @@ class List extends Component {
             }}
             decisionData={this.state}
           >
-            <button onClick={this.shuffleList}> shuffle</button>
             <div>
                 <input type="text" id="option" name="option" />
                 <button onClick={this.addOptions}>add</button>
             </div>
+            <br></br>
             <div>
-              {!!this.state.filteredOptions.length && (
-                <button
-                  className="fm-show-all"
-                  onClick={() => {
-                    this.setState({
-                        filteredOptions: []
-                    });
-                  }}
-                >
-                  show all cards
-                </button>
-              )}
+                {!!this.state.filteredOptions.length && (
+                    <button
+                    className="fm-show-all"
+                    style={{
+                        float: "right"
+                    }}
+                    onClick={() => {
+                        this.setState({
+                            filteredOptions: []
+                        });
+                    }}
+                    >
+                    reset
+                    </button>
+                )}
             </div>
-  
             <Flipped flipId="list">
               <div className="fm-grid">
                 <Flipped inverseFlipId="list">
-                  <ul className="list-contents">
+                  <ul className="list-contents" onClick={this.queryCallback}>
                     {this.state.options
                       .filter(o => !this.state.filteredOptions.includes(o))
                       .map(o => (
@@ -102,6 +114,9 @@ class List extends Component {
                 </Flipped>
               </div>
             </Flipped>
+            <div style={{"text-align": "center"}}>
+                <button id="shuffle" onClick={this.shuffleList}> shuffle</button>
+            </div>
           </Flipper>
         </div>
       );

@@ -49,29 +49,24 @@ function App() {
     }
     document.getElementById("google-map").src = srcBase;
   }, [lat, lon, query]);
-
-  const list = ['Jayharron', 'Rodney', 'Kenneth', 'Ada', 'Neal', 'Alyssa', 'Jhon Mark', 'Bo', 'Harold Inacay', 'Harold Cuico', 'Xerxes', 'Raph', 'CJ', 'Dylan'];
-  const [command, setCommand] = useState('');
-
-  const onDone = (w) => {
-    console.log(w);
-  }
   
+  function queryCallback(query) {
+    setQuery(query);
+  }
+
   return (
-    <div>
+    getLocation(),
+    <div style={{ 'padding-left': '2rem', 'padding-right': '2rem' }}>
         <h1>What to Eat</h1>
-        <div style={{ 'padding-left': '2rem' }}>
-        <button onClick={getLocation}>Use my location</button>
-        </div>
-        
        
-        <List />
+        <List queryCallback={queryCallback} />
         <br />
-        <div style={{ 'padding': '2rem' }}>
+        <div>
         <iframe
             id="google-map"
             src="https://www.google.com/maps/embed/v1/search?q=餐廳&zoom=15&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
-            width="600"
+            width="100%"
+            max-width="900"
             height="450"
             frameborder="0"
             style={{ border: 0 }}
