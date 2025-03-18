@@ -31,8 +31,7 @@ class List extends Component {
     addOptions = option => {
         this.setState(prevState => {
             var value = document.getElementById("option").value;
-            console.log(value);
-            if (value) {
+            if (value && prevState.options.includes(value) === false) {
                 return {
                     options: prevState.options.concat(value)
                 }
