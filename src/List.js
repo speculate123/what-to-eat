@@ -21,7 +21,6 @@ class List extends Component {
   
     addToFilteredOptions = option => {
       this.setState(prevState => {
-        console.log(prevState.filteredOptions.concat(option));
         return {
             filteredOptions: prevState.filteredOptions.concat(option)
         };
@@ -41,14 +40,17 @@ class List extends Component {
 
     shuffleList = () => this.setState(prevState => {
         var shuf = shuffle(prevState.options);
-        document.getElementsByClassName("fm-item")[0].style.backgroundColor = "white";
+        for (var i = 0; i < document.getElementsByClassName("fm-item").length; i++) {
+            document.getElementsByClassName("fm-item")[i].style.backgroundColor = "white";
+        }
         this.setState({
             options: shuf
         })
         setTimeout(() => {
-            document.getElementsByClassName("fm-item")[0].style.backgroundColor = "lightgreen";
-            console.log(document.getElementsByClassName("fm-item")[0]);
-            document.getElementsByClassName("fm-item")[0].click();
+            if (document.getElementsByClassName("fm-item")[0]) {
+                document.getElementsByClassName("fm-item")[0].style.backgroundColor = "lightgreen";
+                document.getElementsByClassName("fm-item")[0].click();
+            }
         }
         , 10);
     });
@@ -74,6 +76,20 @@ class List extends Component {
             </div>
             <br></br>
             <div>
+                <button className="fm-show-all"
+                    style={{
+                        float: "right"
+                    }}
+                    onClick={() => {
+                        this.setState((prevState) => {
+                            this.setState({
+                                filteredOptions: prevState.options
+                            });
+                        });
+                    }}
+                    >
+                    clear
+                </button>
                 {!!this.state.filteredOptions.length && (
                     <button
                     className="fm-show-all"

@@ -4,13 +4,6 @@ import 'react-luckydraw/lib/LuckyDraw.css';
 import ReactDOM from "react-dom";
 import List from "./List";
 
-
-ReactDOM.createRoot(document.getElementById('app')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
 function App() {
 
   const [lat, setLat] = useState(null);
@@ -79,5 +72,7 @@ function App() {
     </div>
   );
 }
+
+ReactDOM.render(<App/>,document.getElementById('root'));
 
 export default App;
