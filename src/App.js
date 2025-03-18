@@ -55,7 +55,10 @@ function App() {
         <List queryCallback={queryCallback} />
         <br />
         <div>
-        <button onClick={getLocation}>Get Location</button>
+        <button onClick={getLocation} style={{
+          float: "right"
+        }}>Get Location</button>
+        <br />
         <br />
         <iframe
             id="google-map"
